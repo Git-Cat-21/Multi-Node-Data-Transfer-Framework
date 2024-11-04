@@ -16,23 +16,21 @@ def start_client():
             pwd = input("Password: ")
             client_socket.send(userid.encode('utf-8'))
             response = client_socket.recv(1024).decode('utf-8')
-            print(f"Server response: {response}")
-            #print("pwd=" ,pwd,"response=" ,response)
             pwd_check = response.split(":")
-            print(pwd_check[1].strip())
-            if pwd_check == pwd.strip():
-                print("Password matches")
-            # print("1.Exit\t2.Copy\t3.Break")
-            # choice = int(input("Enter your choice:"))
-            # if choice == 1:
-            #     print("Exit session")
-            # elif choice == 2:
-            #     print("Copy")
-            # elif choice == 3:
-            #     print("Bye!")
-            #     continue
-            # else:
-            #     print("Wrong choice. Please try again!")
+            if pwd_check[1].strip() == pwd.strip():
+                print("1.Exit\t2.Copy\t3.Break")
+                choice = int(input("Enter your choice:"))
+                if choice == 1:
+                    print("Exit session")
+                elif choice == 2:
+                    print("Copy")
+                elif choice == 3:
+                    print("Bye!")
+                    continue
+                else:
+                    print("Wrong choice. Please try again!")
+            else:
+                print("Not matched")
             if userid.lower() == "exit":
                 break
     else:

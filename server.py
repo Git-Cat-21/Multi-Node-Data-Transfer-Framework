@@ -9,7 +9,7 @@ def handle_client(client_socket, addr):
         message = client_socket.recv(1024).decode('utf-8')
         if message == "HELLO":
             client_socket.send("ACK".encode('utf-8'))  # Send acknowledgment
-            print(f"[HANDSHAKE] Handshake successful with {addr}")
+            print(f"Connection successful with {addr}")
             
             # Data transfer after handshake
             while True:
@@ -23,7 +23,7 @@ def handle_client(client_socket, addr):
                 print(pwd)
                 if not data:  # No data means client disconnected
                     break
-                print(f"[{addr}] Received: {data}")
+                print(f"Received from [{addr}]: {data}")
                 
                 # Echo back data
                 client_socket.send(f"Echo: {pwd}".encode('utf-8'))
