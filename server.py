@@ -123,5 +123,5 @@ def start_server():
         except OSError:
             break  # Exit loop if server socket is closed
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     start_server()
